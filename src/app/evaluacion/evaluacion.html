@@ -1,0 +1,89 @@
+<div class="navbar">
+  <div class="titulo">
+    <h2>Plataforma Interna de Trabajadores de EsSalud</h2>
+
+    <p>Sub Gerencia de Evaluación, Desarrollo y Capacitación</p>
+  </div>
+</div>
+
+<div class="contenedor-evaluacion">
+  <!-- PANTALLA INICIAL -->
+
+  <div class="inicio-evaluacion" *ngIf="!evaluacionIniciada">
+    <h1>Evaluación Virtual</h1>
+
+    <p>Bienvenido al examen virtual para trabajadores.</p>
+
+    <div class="info-examen">
+      <p>⏳ Duración: 1 hora</p>
+
+      <p>
+        📋 Preguntas:
+        {{ preguntas.length }}
+      </p>
+
+      <p>✅ Puntaje mínimo: 2 respuestas correctas</p>
+    </div>
+
+    <button class="btn-iniciar" (click)="iniciarEvaluacion()">Iniciar Evaluación</button>
+  </div>
+
+  <!-- EXAMEN -->
+
+  <div *ngIf="evaluacionIniciada && !examenFinalizado">
+    <div class="header-evaluacion">
+      <h1>Evaluación Virtual</h1>
+
+      <div class="temporizador">
+        ⏳ Tiempo restante:
+        {{ obtenerTiempoFormateado() }}
+      </div>
+
+      <p>
+        Pregunta
+        {{ preguntaActual + 1 }}
+        de
+        {{ preguntas.length }}
+      </p>
+    </div>
+
+    <div class="card-pregunta">
+      <h2>
+        {{ preguntas[preguntaActual].pregunta }}
+      </h2>
+
+      <div class="opciones">
+        <label class="opcion" *ngFor="let opcion of preguntas[preguntaActual].opciones">
+          <input
+            type="radio"
+            [name]="'pregunta'"
+            [value]="opcion"
+            [(ngModel)]="preguntas[preguntaActual].respuestaSeleccionada"
+          />
+
+          <span>
+            {{ opcion }}
+          </span>
+        </label>
+      </div>
+
+      <div class="acciones">
+        <button (click)="siguientePregunta()">
+          {{ preguntaActual === preguntas.length - 1 ? 'Finalizar' : 'Siguiente' }}
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- RESULTADO -->
+
+  <div class="resultado" *ngIf="examenFinalizado">
+    <h1>Evaluación Finalizada</h1>
+
+    <p class="puntaje">{{ puntaje }}/{{ preguntas.length }}</p>
+
+    <div class="estado-final" [ngClass]="puntaje >= 2 ? 'apto' : 'desaprobado'">
+      {{ puntaje >= 2 ? 'APTO' : 'NO APTO' }}
+    </div>
+  </div>
+</div>

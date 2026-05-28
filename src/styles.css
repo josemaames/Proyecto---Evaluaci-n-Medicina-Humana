@@ -1,1 +1,51 @@
-/* You can add global styles to this file, and also import other style files */
+* {
+  margin: 0;
+
+  padding: 0;
+
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Tahoma, Arial, sans-serif;
+
+  background: #eef2f5;
+
+  color: #1f2937;
+
+  font-size: 14px;
+
+  line-height: 1.5;
+}
+
+/* TITULOS */
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: Tahoma, Arial, sans-serif;
+
+  font-weight: 600;
+
+  color: #1f2937;
+}
+
+/* BOTONES */
+
+button {
+  font-family: Tahoma, Arial, sans-serif;
+
+  font-size: 13px;
+}
+
+/* INPUTS */
+
+input,
+select,
+textarea {
+  font-family: Tahoma, Arial, sans-serif;
+
+  font-size: 13px;
+}

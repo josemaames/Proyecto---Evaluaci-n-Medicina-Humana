@@ -1,0 +1,91 @@
+<div class="contenedor">
+  <div class="header-trabajadores">
+    <div>
+      <h2>Trabajadores Registrados</h2>
+
+      <p>Gestión interna de capacitaciones</p>
+    </div>
+
+    <div class="acciones-header">
+      <button (click)="obtenerTrabajadores()">Actualizar Lista</button>
+    </div>
+  </div>
+
+  <!-- FORMULARIO -->
+
+  <div class="formulario">
+    <h3>
+      {{ editando ? 'Editar trabajador' : 'Nuevo trabajador' }}
+    </h3>
+
+    <div class="inputs">
+      <input type="text" placeholder="Nombre del trabajador" [(ngModel)]="nombre" />
+
+      <input type="text" placeholder="Curso" [(ngModel)]="curso" />
+
+      <select [(ngModel)]="estado">
+        <option value="">Estado</option>
+
+        <option value="Activo">Activo</option>
+
+        <option value="Pendiente">Pendiente</option>
+
+        <option value="Completado">Completado</option>
+      </select>
+
+      <button (click)="agregarTrabajador()">
+        {{ editando ? 'Guardar cambios' : 'Guardar registro' }}
+      </button>
+    </div>
+  </div>
+
+  <!-- BUSCADOR -->
+
+  <div class="buscador">
+    <input
+      type="text"
+      placeholder="🔍 Buscar trabajador, curso o estado..."
+      [(ngModel)]="busqueda"
+    />
+  </div>
+
+  <!-- TABLA -->
+
+  <div class="tabla-contenedor">
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+
+          <th>Trabajador</th>
+
+          <th>Curso</th>
+
+          <th>Estado</th>
+
+          <th>Acciones</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let trabajador of filtrarTrabajadores()">
+          <td>{{ trabajador.id }}</td>
+
+          <td>{{ trabajador.nombre }}</td>
+
+          <td>{{ trabajador.curso }}</td>
+
+          <td>
+            <span class="estado" [ngClass]="trabajador.estado.toLowerCase()">
+              {{ trabajador.estado }}
+            </span>
+          </td>
+
+          <td>
+            <button class="btn-editar" (click)="editarTrabajador(trabajador)">Editar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

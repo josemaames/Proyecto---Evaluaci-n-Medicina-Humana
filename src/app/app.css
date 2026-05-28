@@ -1,0 +1,168 @@
+body {
+  margin: 0;
+  background: #eef1f5;
+  font-family: Arial, sans-serif;
+}
+
+/* Barra azul superior */
+
+.navbar {
+  background: #005ca9;
+
+  height: 95px;
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  padding: 0px 80px;
+
+  color: white;
+}
+
+.titulo h2 {
+  font-size: 20px;
+
+  font-weight: 600;
+
+  color: white;
+}
+
+.titulo p {
+  font-size: 12px;
+
+  margin-top: 4px;
+
+  color: white;
+}
+
+.usuario {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  font-size: 14px;
+}
+
+.usuario button {
+  background: transparent;
+
+  color: white;
+
+  border: 1px solid rgba(255, 255, 255, 0.5);
+
+  padding: 10px 18px;
+
+  border-radius: 4px;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+.usuario button:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* Menú */
+
+.menu {
+  height: 50px;
+
+  background: white;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 40px;
+
+  padding-left: 80px;
+
+  border-bottom: 1px solid #d7d7d7;
+}
+
+.menu a {
+  height: 100%;
+
+  display: flex;
+
+  align-items: center;
+
+  cursor: pointer;
+
+  font-size: 15px;
+}
+
+.activo {
+  color: #005ca9;
+
+  font-weight: bold;
+
+  border-bottom: 3px solid #005ca9;
+}
+
+/* Contenido */
+
+.contenedor {
+  padding: 35px 80px;
+}
+
+.contenedor h2 {
+  font-size: 34px;
+  font-weight: 500;
+  margin-bottom: 25px;
+}
+
+/* Paneles */
+
+.panel {
+  background: white;
+
+  padding: 30px;
+
+  margin-bottom: 25px;
+
+  border-radius: 8px;
+
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.08);
+}
+
+.panel h3 {
+  color: #005ca9;
+
+  margin-bottom: 35px;
+
+  font-size: 18px;
+}
+
+/* Datos */
+
+.grid {
+  display: grid;
+
+  grid-template-columns: repeat(4, 1fr);
+
+  gap: 40px;
+}
+
+label {
+  font-size: 12px;
+
+  color: #8a8a8a;
+
+  text-transform: uppercase;
+
+  display: block;
+
+  margin-bottom: 12px;
+}
+
+p {
+  font-size: 18px;
+
+  margin: 0;
+
+  color: #333;
+}

@@ -1,0 +1,44 @@
+<div class="login-container">
+  <div class="login-card">
+    <div class="header-login">
+      <h1>Plataforma Integral de Gestión del Recurso Humano</h1>
+
+      <p>PIGRH</p>
+    </div>
+
+    <div class="formulario">
+      <label> N. de documento </label>
+
+      <input type="text" placeholder="Ingrese su número de documento" [(ngModel)]="usuario" />
+
+      <label> Contraseña </label>
+
+      <div class="password-container">
+        <input
+          [type]="mostrarPassword ? 'text' : 'password'"
+          placeholder="Ingrese su contraseña"
+          [(ngModel)]="password"
+        />
+
+        <span class="mostrar" (click)="mostrarPassword = !mostrarPassword">
+          {{ mostrarPassword ? 'Ocultar' : 'Mostrar' }}
+        </span>
+      </div>
+
+      <button (click)="login()">Ingresar</button>
+    </div>
+
+    <div class="footer-login">
+      <p>
+        ¿No tienes una cuenta?
+        <a> Regístrate aquí </a>
+      </p>
+
+      <hr />
+
+      <p class="copyright">EsSalud - PIGRH</p>
+
+      <a class="manual"> Ver Manual de Usuario </a>
+    </div>
+  </div>
+</div>
