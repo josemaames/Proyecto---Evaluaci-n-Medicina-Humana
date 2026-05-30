@@ -1,77 +1,102 @@
 <div class="navbar">
   <div class="titulo">
-    <h2>Plataforma Interna de Trabajadores de EsSalud</h2>
-
-    <p>Sub Gerencia de Evaluación, Desarrollo y Capacitación</p>
-  </div>
-</div>
-
-<div class="dashboard">
-  <div class="header-dashboard">
-    <h1>Panel Administrativo</h1>
+    <h2>Panel Administrativo</h2>
 
     <p>Monitoreo general de evaluaciones</p>
   </div>
 
-  <div class="cards">
-    <div class="card">
-      <h2>Resultados</h2>
+  <div class="usuario">
+    <span> ADMINISTRADOR </span>
 
-      <p>Aptos: 120</p>
+    <button>Cerrar sesión</button>
+  </div>
+</div>
 
-      <p>No Aptos: 35</p>
+<div class="contenedor-admin">
+  <!-- MENÚ SUPERIOR -->
+
+  <div class="menu-admin">
+    <button [class.activo]="vistaActiva === 'general'" (click)="vistaActiva = 'general'">
+      Información General
+    </button>
+
+    <button [class.activo]="vistaActiva === 'postulantes'" (click)="vistaActiva = 'postulantes'">
+      Postulantes
+    </button>
+  </div>
+
+  <!-- INFORMACIÓN GENERAL -->
+
+  <div class="card-general" *ngIf="vistaActiva === 'general'">
+    <h2>Información General Postulantes</h2>
+
+    <div class="grid-general">
+      <div>
+        <strong>Aptos:</strong>
+        120
+      </div>
+
+      <div>
+        <strong>No Aptos:</strong>
+        35
+      </div>
+
+      <div>
+        <strong>Tiempo Promedio:</strong>
+        42 min
+      </div>
+
+      <div>
+        <strong>Evaluaciones Activas:</strong>
+        56
+      </div>
+
+      <div>
+        <strong>Pico de Ingreso:</strong>
+        09:00 AM
+      </div>
+    </div>
+  </div>
+
+  <!-- POSTULANTES -->
+
+  <div class="card-postulantes" *ngIf="vistaActiva === 'postulantes'">
+    <h2>Postulantes</h2>
+
+    <div class="postulante">
+      <img src="https://i.pravatar.cc/100" />
+
+      <div>
+        <h3>Juan Pérez</h3>
+
+        <p>Estado: APTO</p>
+
+        <p>Inicio: 8:30 AM</p>
+
+        <p>Fin: 9:12 AM</p>
+
+        <p>Latencia: 32 ms</p>
+
+        <p>Ubicación: Lima, Perú</p>
+      </div>
     </div>
 
-    <div class="card">
-      <h2>Tiempo de Evaluación</h2>
+    <div class="postulante">
+      <img src="https://i.pravatar.cc/101" />
 
-      <p>Promedio: 42 min</p>
-    </div>
+      <div>
+        <h3>María Torres</h3>
 
-    <div class="card">
-      <h2>Pico de Ingreso</h2>
+        <p>Estado: NO APTO</p>
 
-      <p>09:00 AM</p>
+        <p>Inicio: 9:00 AM</p>
 
-      <p>145 usuarios</p>
-    </div>
+        <p>Fin: 9:50 AM</p>
 
-    <div class="card">
-      <h2>Historial del Usuario</h2>
+        <p>Latencia: 48 ms</p>
 
-      <p>Inicio: 8:30 AM</p>
-
-      <p>Fin: 9:12 AM</p>
-    </div>
-
-    <div class="card">
-      <h2>Nivel de Latencia</h2>
-
-      <p>32 ms</p>
-    </div>
-
-    <div class="card">
-      <h2>Ubicación</h2>
-
-      <p>Lima, Perú</p>
-    </div>
-
-    <div class="card">
-      <h2>Foto del Postulante</h2>
-
-      <img src="https://i.pravatar.cc/150" />
-    </div>
-
-    <div class="card">
-      <h2>Evaluaciones Activas</h2>
-
-      <p>56 en curso</p>
-    </div>
-
-    <div class="card">
-      <h2>Usuarios Conectados</h2>
-
-      <p>210 conectados</p>
+        <p>Ubicación: Piura, Perú</p>
+      </div>
     </div>
   </div>
 </div>
