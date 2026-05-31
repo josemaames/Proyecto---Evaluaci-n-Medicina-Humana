@@ -6,18 +6,24 @@
       <p>PIGRH</p>
     </div>
 
-    <div class="formulario">
-      <label> N. de documento </label>
+    <form class="formulario" (ngSubmit)="login()">
+      <label>N. de documento</label>
 
-      <input type="text" placeholder="Ingrese su número de documento" [(ngModel)]="usuario" />
+      <input
+        type="text"
+        placeholder="Ingrese su número de documento"
+        [(ngModel)]="usuario"
+        name="usuario"
+      />
 
-      <label> Contraseña </label>
+      <label>Contraseña</label>
 
       <div class="password-container">
         <input
           [type]="mostrarPassword ? 'text' : 'password'"
           placeholder="Ingrese su contraseña"
           [(ngModel)]="password"
+          name="password"
         />
 
         <span class="mostrar" (click)="mostrarPassword = !mostrarPassword">
@@ -25,20 +31,24 @@
         </span>
       </div>
 
-      <button (click)="login()">Ingresar</button>
-    </div>
+      <p class="error-login" *ngIf="mensajeError">
+        {{ mensajeError }}
+      </p>
+
+      <button type="submit">Ingresar</button>
+    </form>
 
     <div class="footer-login">
       <p>
         ¿No tienes una cuenta?
-        <a> Regístrate aquí </a>
+        <a>Regístrate aquí</a>
       </p>
 
       <hr />
 
       <p class="copyright">EsSalud - PIGRH</p>
 
-      <a class="manual"> Ver Manual de Usuario </a>
+      <a class="manual">Ver Manual de Usuario</a>
     </div>
   </div>
 </div>

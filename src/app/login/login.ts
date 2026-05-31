@@ -24,11 +24,14 @@ export class Login {
 
   mostrarPassword = false;
 
+  mensajeError = '';
+
   constructor(private router: Router) {}
 
   login() {
-    // LOGIN ADMINISTRADOR
+    this.mensajeError = '';
 
+    // LOGIN ADMINISTRADOR
     if (this.usuario === 'admin' && this.password === '1234') {
       this.router.navigate(['/admin']);
     }
@@ -36,8 +39,11 @@ export class Login {
     // LOGIN USUARIO
     else if (this.usuario === 'usuario' && this.password === '1234') {
       this.router.navigate(['/panel-usuario']);
-    } else {
-      alert('Credenciales incorrectas');
+    }
+
+    // ERROR
+    else {
+      this.mensajeError = 'Usuario o contraseña incorrectos';
     }
   }
 }

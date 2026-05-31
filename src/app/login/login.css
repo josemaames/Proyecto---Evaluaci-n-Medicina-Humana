@@ -155,3 +155,11 @@ body {
 
   margin-top: 18px;
 }
+
+.error-login {
+  color: #dc2626;
+  font-size: 14px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-weight: 500;
+}

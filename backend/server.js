@@ -1,3 +1,5 @@
+const oracledb = require('oracledb');
+
 const express = require('express');
 
 const cors = require('cors');
@@ -20,6 +22,46 @@ const pool = new Pool({
   password: 'Postgres2026!',
 
   port: 5432,
+});
+
+/* =========================================
+   PRUEBA ORACLE
+========================================= */
+
+app.get('/oracle-test', async (req, res) => {
+  let connection;
+
+  try {
+    connection = await oracledb.getConnection({
+      user: 'ESSALUD',
+
+      password: 'Essalud2026',
+
+      connectString: 'localhost:1521/xepdb1',
+    });
+
+    const result = await connection.execute(`
+      SELECT table_name
+      FROM user_tables
+      ORDER BY table_name
+    `);
+
+    res.json(result.rows);
+  } catch (error) {
+    console.log(error);
+
+    res.status(500).json({
+      error: error.message,
+    });
+  } finally {
+    if (connection) {
+      try {
+        await connection.close();
+      } catch (err) {
+        console.log(err);
+      }
+    }
+  }
 });
 
 /* =========================================
@@ -56,7 +98,6 @@ app.post('/trabajadores', async (req, res) => {
 
       RETURNING *
       `,
-
       [nombre, curso, estado],
     );
 
@@ -92,7 +133,6 @@ app.put('/trabajadores/:id', async (req, res) => {
 
       RETURNING *
       `,
-
       [nombre, curso, estado, id],
     );
 
